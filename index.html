@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nitesh Roopa CA — Real Estate Sales Agent</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1B2A4A;--gold:#C9A84C;--gold-light:#E8CC85;
+  --bg:#ffffff;--bg2:#f7f6f2;--t:#1a1a1a;--t2:#555450;--t3:#888780;
+  --border:rgba(0,0,0,0.12);--radius:12px;
+  --re:#1D6B4A;--re-light:#E8F4EE;
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#1a1917;--bg2:#242220;--t:#e8e6de;--t2:#a09e96;--t3:#68665f;
+  --border:rgba(255,255,255,0.1);--re-light:#0e2e1f;
+}}
+
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;color:var(--t);background:var(--bg);font-size:14px;line-height:1.5}
+
+/* ── HEADER ── */
+.hdr{background:var(--navy);color:#fff;padding:2rem 2.5rem 1.5rem;border-bottom:3px solid var(--gold)}
+.hdr-inner{display:flex;align-items:flex-start;gap:1.5rem;max-width:1000px;margin:0 auto}
+.avatar{width:72px;height:72px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:500;color:var(--navy);flex-shrink:0}
+.hdr-text h1{font-size:26px;font-weight:500;margin-bottom:2px}
+.hdr-text h1 span{color:var(--gold);font-weight:400;font-size:18px;margin-left:8px}
+.hdr-text .sub{font-size:13px;color:rgba(255,255,255,.6);margin-bottom:.75rem;letter-spacing:.3px}
+.hdr-pills{display:flex;flex-wrap:wrap;gap:6px}
+.pill{background:rgba(201,168,76,.18);border:0.5px solid rgba(201,168,76,.4);color:var(--gold-light);font-size:11px;padding:3px 10px;border-radius:20px}
+.pill.re{background:rgba(29,107,74,.35);border-color:rgba(29,107,74,.6);color:#7ecba4}
+.hdr-contact{margin-left:auto;text-align:right;font-size:12px;color:rgba(255,255,255,.6);line-height:2;flex-shrink:0}
+.hdr-contact a{color:var(--gold-light);text-decoration:none}
+
+/* ── RE INTENT BANNER ── */
+.re-banner{background:var(--re-light);border-left:4px solid var(--re);padding:1rem 1.5rem;margin:0;border-bottom:0.5px solid var(--border)}
+.re-banner-inner{max-width:1000px;margin:0 auto;display:flex;gap:1rem;align-items:flex-start}
+.re-icon{font-size:22px;margin-top:2px;flex-shrink:0}
+.re-body{font-size:12.5px;color:var(--t2);line-height:1.65}
+.re-body strong{color:var(--re);font-size:13px}
+
+/* ── METRICS ── */
+.metrics{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border);border-bottom:1px solid var(--border)}
+.metric-card{background:var(--bg);padding:1.1rem 1rem;text-align:center}
+.metric-num{font-size:28px;font-weight:500;color:var(--navy);display:block;line-height:1}
+@media(prefers-color-scheme:dark){.metric-num{color:var(--gold-light)}}
+.metric-num span{font-size:15px;font-weight:400;color:var(--t2)}
+.metric-lbl{font-size:11px;color:var(--t3);margin-top:4px;letter-spacing:.3px}
+
+/* ── BODY ── */
+.body{max-width:1000px;margin:0 auto;padding:2rem;display:grid;grid-template-columns:1fr 310px;gap:2rem}
+@media(max-width:740px){.body{grid-template-columns:1fr}}
+.sec{margin-bottom:1.75rem}
+.sec-title{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;color:var(--t3);margin-bottom:.75rem;padding-bottom:.4rem;border-bottom:0.5px solid var(--border)}
+.sec-title.re-sec{color:var(--re);border-bottom-color:var(--re)}
+
+/* ── TIMELINE ── */
+.tl{position:relative;padding-left:22px}
+.tl::before{content:'';position:absolute;left:6px;top:8px;bottom:8px;width:1.5px;background:linear-gradient(to bottom,var(--gold) 0%,var(--border) 100%)}
+.tl-item{position:relative;margin-bottom:1.4rem}
+.tl-dot{position:absolute;left:-19px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--gold);border:2px solid var(--bg)}
+.tl-dot.hollow{background:var(--bg);border-color:var(--gold-light)}
+.tl-period{font-size:10px;color:var(--t3);margin-bottom:2px;letter-spacing:.3px}
+.tl-role{font-size:13px;font-weight:500;color:var(--t);line-height:1.3}
+.tl-org{font-size:12px;color:var(--gold);margin:2px 0 4px}
+.tl-desc{font-size:12px;color:var(--t2);line-height:1.65}
+.tl-tag{display:inline-block;background:var(--bg2);border:0.5px solid var(--border);font-size:10px;color:var(--t3);padding:2px 7px;border-radius:4px;margin:4px 3px 0 0}
+.tl-tag.re-tag{background:var(--re-light);border-color:rgba(29,107,74,.3);color:var(--re)}
+
+/* ── RE CROSSWALK BOX ── */
+.re-xwalk{background:var(--re-light);border:0.5px solid rgba(29,107,74,.25);border-radius:var(--radius);padding:.85rem 1rem;margin-top:.5rem}
+.re-xwalk-title{font-size:9px;font-weight:500;text-transform:uppercase;letter-spacing:1.2px;color:var(--re);margin-bottom:.4rem}
+.re-xwalk-body{font-size:11.5px;color:var(--t2);line-height:1.6}
+
+/* ── CHARTS ── */
+.chart-row{display:flex;align-items:center;gap:8px;margin-bottom:7px}
+.chart-lbl{font-size:11px;color:var(--t2);width:130px;flex-shrink:0;line-height:1.3}
+.chart-bar-bg{flex:1;height:8px;background:var(--bg2);border-radius:4px;overflow:hidden}
+.chart-bar{height:100%;border-radius:4px;transition:width 1s ease}
+.chart-val{font-size:11px;color:var(--t3);width:38px;text-align:right;flex-shrink:0}
+
+/* ── DONUT ── */
+.donut-wrap{display:flex;align-items:center;gap:20px;margin-top:.5rem}
+.donut-legend{flex:1}
+.donut-leg-row{display:flex;align-items:center;gap:6px;margin-bottom:6px;font-size:12px;color:var(--t2)}
+.leg-dot{width:10px;height:10px;border-radius:2px;flex-shrink:0}
+
+/* ── DEAL TABLE ── */
+.deal-tbl{width:100%;border-collapse:collapse;font-size:11.5px}
+.deal-tbl th{text-align:left;color:var(--t3);font-weight:400;padding:5px 7px;border-bottom:0.5px solid var(--border);font-size:10px;letter-spacing:.3px;text-transform:uppercase}
+.deal-tbl td{padding:6px 7px;border-bottom:0.5px solid var(--border);color:var(--t2);vertical-align:top}
+.deal-tbl tr:last-child td{border-bottom:none}
+.deal-tbl .nm{color:var(--t);font-weight:500}
+.deal-tbl .badge{display:inline-block;font-size:9px;padding:2px 6px;border-radius:3px}
+.bd-debt{background:#E6F1FB;color:#185FA5}
+.bd-eq{background:#FAEEDA;color:#854F0B}
+.bd-mix{background:#EAF3DE;color:#3B6D11}
+.bd-re{background:#E8F4EE;color:#1D6B4A}
+@media(prefers-color-scheme:dark){
+  .bd-debt{background:#0C447C;color:#B5D4F4}
+  .bd-eq{background:#633806;color:#FAC775}
+  .bd-mix{background:#27500A;color:#C0DD97}
+  .bd-re{background:#0e2e1f;color:#7ecba4}
+}
+
+/* ── SIDEBAR ── */
+.side-card{background:var(--bg);border:0.5px solid var(--border);border-radius:var(--radius);padding:1.1rem;margin-bottom:1.1rem}
+.side-card.re-card{border-color:rgba(29,107,74,.3);background:var(--re-light)}
+.edu-row{margin-bottom:.8rem}
+.edu-row:last-child{margin-bottom:0}
+.edu-qual{font-size:12px;font-weight:500;color:var(--t)}
+.edu-inst{font-size:11px;color:var(--t2);margin-top:1px}
+.edu-yr{font-size:10px;color:var(--t3);margin-top:1px}
+.geo-flags{display:flex;gap:12px;flex-wrap:wrap;margin-top:.5rem}
+.geo-item{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--t2)}
+.geo-flag{font-size:20px;line-height:1}
+.passion-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:.5rem}
+.p-tag{background:var(--bg2);border:0.5px solid var(--border);border-radius:20px;font-size:10px;color:var(--t2);padding:3px 10px}
+
+/* ── RE CAPABILITY LIST ── */
+.re-cap-list{list-style:none;padding:0;margin:.4rem 0 0}
+.re-cap-list li{font-size:11.5px;color:var(--t2);padding:4px 0;border-bottom:0.5px solid var(--border);display:flex;gap:8px;line-height:1.4}
+.re-cap-list li:last-child{border-bottom:none}
+.re-cap-list li::before{content:'→';color:var(--re);font-size:11px;flex-shrink:0;margin-top:1px}
+
+/* ── FOOTER ── */
+.ftr{background:var(--navy);color:rgba(255,255,255,.5);font-size:11px;text-align:center;padding:.9rem;letter-spacing:.4px;margin-top:1rem}
+.ftr a{color:var(--gold-light);text-decoration:none}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ════════════════════════════════════════════════════════════ -->
+<div class="hdr">
+  <div class="hdr-inner">
+    <div class="avatar">NR</div>
+    <div class="hdr-text">
+      <h1>Nitesh Roopa <span>CA</span></h1>
+      <div class="sub">Real Estate Sales Agent &nbsp;│&nbsp; Trusted Advisor to High-Net-Worth Clients &nbsp;│&nbsp; Brisbane</div>
+      <div class="hdr-pills">
+        <span class="pill re">Residential Sales</span>
+        <span class="pill re">Commercial Sales</span>
+        <span class="pill re">High-Value Transactions</span>
+        <span class="pill re">Investor Clients</span>
+        <span class="pill">Client Relationship Management</span>
+        <span class="pill">Negotiation</span>
+        <span class="pill">Financial Acumen</span>
+        <span class="pill">Chartered Accountant</span>
+      </div>
+    </div>
+    <div class="hdr-contact">
+      +61 411 876 267<br>
+      <a href="mailto:Nitesh@NRAdvisory.com.au">Nitesh@NRAdvisory.com.au</a><br>
+      <a href="https://NRAdvisory.com.au">NRAdvisory.com.au</a><br>
+      <a href="https://Profit-Pulse.com.au">Profit-Pulse.com.au</a><br>
+      Brisbane, Australia
+    </div>
+  </div>
+</div>
+
+<!-- ═══ REAL ESTATE INTENT BANNER ════════════════════════════════════════ -->
+<div class="re-banner">
+  <div class="re-banner-inner">
+    <div class="re-icon">🏡</div>
+    <div class="re-body">
+      <strong>Entering Real Estate Sales — A Genuine Point of Difference for Buyers, Sellers &amp; Investors</strong><br>
+      After 16+ years advising governments, institutional investors and major corporations on transactions up to A$10bn in scale, I am bringing that same client-first discipline, financial literacy and high-stakes negotiation experience into real estate sales. I understand exactly how sophisticated buyers and investors think about property — the numbers, the risk, the timing and the decision-making process. I speak that language fluently, and I know how to earn trust quickly and close with confidence.
+    </div>
+  </div>
+</div>
+
+<!-- ═══ METRICS ═══════════════════════════════════════════════════════════ -->
+<div class="metrics">
+  <div class="metric-card"><span class="metric-num">16<span>+</span></span><div class="metric-lbl">Years advising sophisticated clients</div></div>
+  <div class="metric-card"><span class="metric-num">52</span><div class="metric-lbl">High-value transactions led</div></div>
+  <div class="metric-card"><span class="metric-num">US$<span>1.3bn</span></span><div class="metric-lbl">Largest single deal negotiated</div></div>
+  <div class="metric-card"><span class="metric-num">A$<span>10bn</span></span><div class="metric-lbl">Largest project managed</div></div>
+  <div class="metric-card"><span class="metric-num">CA</span><div class="metric-lbl">Qualified Chartered Accountant</div></div>
+</div>
+
+<!-- ═══ BODY ══════════════════════════════════════════════════════════════ -->
+<div class="body">
+  <div>
+
+    <!-- What I bring -->
+    <div class="sec">
+      <div class="sec-title re-sec">What I bring to real estate sales</div>
+      <div class="re-xwalk">
+        <div class="re-xwalk-title">My background → why it makes me a better agent</div>
+        <div class="re-xwalk-body">
+          <table style="width:100%;border-collapse:collapse;font-size:11.5px">
+            <tr style="border-bottom:0.5px solid rgba(29,107,74,.15)">
+              <td style="padding:5px 8px 5px 0;color:#1D6B4A;font-weight:500;width:44%">Negotiating high-stakes deals up to US$1.3bn</td>
+              <td style="padding:5px 0;color:var(--t2)">→ Composure, strategy and closing ability in any price range</td>
+            </tr>
+            <tr style="border-bottom:0.5px solid rgba(29,107,74,.15)">
+              <td style="padding:5px 8px 5px 0;color:#1D6B4A;font-weight:500">Advising boards, governments &amp; institutional investors</td>
+              <td style="padding:5px 0;color:var(--t2)">→ Naturally at ease with high-net-worth and investor buyers</td>
+            </tr>
+            <tr style="border-bottom:0.5px solid rgba(29,107,74,.15)">
+              <td style="padding:5px 8px 5px 0;color:#1D6B4A;font-weight:500">Explaining complex financial decisions simply and clearly</td>
+              <td style="padding:5px 0;color:var(--t2)">→ Helps buyers and sellers understand value and make confident decisions</td>
+            </tr>
+            <tr style="border-bottom:0.5px solid rgba(29,107,74,.15)">
+              <td style="padding:5px 8px 5px 0;color:#1D6B4A;font-weight:500">Managing multiple advisors, stakeholders &amp; timelines</td>
+              <td style="padding:5px 0;color:var(--t2)">→ Keeps transactions on track and all parties aligned</td>
+            </tr>
+            <tr>
+              <td style="padding:5px 8px 5px 0;color:#1D6B4A;font-weight:500">Reading what clients actually need, not just what they say</td>
+              <td style="padding:5px 0;color:var(--t2)">→ Builds genuine trust and long-term referral relationships</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Career Timeline -->
+    <div class="sec">
+      <div class="sec-title">Career background</div>
+      <div class="tl">
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Aug 2025 – Present</div>
+          <div class="tl-role">Founder &amp; Principal Advisor</div>
+          <div class="tl-org">NR Advisory Pty Ltd &nbsp;·&nbsp; ProfitPulse</div>
+          <div class="tl-desc">Running two client-facing advisory businesses in Brisbane. Day-to-day work involves winning new clients, building trust quickly, diagnosing what clients actually need and delivering clear recommendations under pressure. Comfortable being accountable for outcomes — there is no salary floor when you run your own practice.</div>
+          <span class="tl-tag re-tag">Client Acquisition</span><span class="tl-tag re-tag">Trusted Advisor</span><span class="tl-tag">Business Development</span>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Oct 2023 – Sep 2025</div>
+          <div class="tl-role">Finance &amp; Commercial Lead</div>
+          <div class="tl-org">North Brisbane Infrastructure &nbsp;·&nbsp; QIC (on behalf of Queensland Treasury)</div>
+          <div class="tl-desc">Embedded within a major Queensland government infrastructure project. Managed relationships with Queensland Treasury, legal teams, insurers and commercial advisors simultaneously — keeping all parties moving toward a single outcome. Gained direct exposure to how large land parcels, corridors and government-owned property are valued, negotiated and transacted at scale.</div>
+          <span class="tl-tag re-tag">Multi-Stakeholder Management</span><span class="tl-tag re-tag">Land &amp; Property Exposure</span><span class="tl-tag">Negotiation</span>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot hollow"></div>
+          <div class="tl-period">Oct 2022 – Sep 2023</div>
+          <div class="tl-role">Family Relocation — Career Break</div>
+          <div class="tl-org">Johannesburg → Brisbane</div>
+          <div class="tl-desc">Relocated family to Brisbane and immersed myself in the Australian residential and commercial property market — suburbs, price dynamics, school catchments, infrastructure pipeline and the lifestyle factors that drive buyer decisions.</div>
+          <span class="tl-tag re-tag">Brisbane Market Knowledge</span>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Apr 2020 – Sep 2022</div>
+          <div class="tl-role">Associate Principal – Principal &amp; Equity Finance</div>
+          <div class="tl-org">Nedbank CIB</div>
+          <div class="tl-desc">Originated new client relationships from scratch, presented investment proposals and closed deals in a highly competitive environment. Responsible for an entire book of clients — managing expectations, resolving problems and maintaining relationships through the full lifecycle of a transaction.</div>
+          <span class="tl-tag re-tag">Deal Origination</span><span class="tl-tag re-tag">Relationship Management</span><span class="tl-tag">Client Retention</span>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Nov 2018 – Mar 2020</div>
+          <div class="tl-role">Associate Principal – Energy Finance</div>
+          <div class="tl-org">Nedbank CIB</div>
+          <div class="tl-desc">Attended international conferences and panels representing Nedbank's brand — comfortable speaking publicly to sophisticated audiences about complex topics and making it accessible. Managed relationships with sponsors, contractors, co-lenders and government off-takers across multiple jurisdictions.</div>
+          <span class="tl-tag re-tag">Public Representation</span><span class="tl-tag re-tag">Multi-Party Negotiation</span>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Mar 2017 – Oct 2018</div>
+          <div class="tl-role">Senior Associate – Energy Finance</div>
+          <div class="tl-org">Nedbank CIB</div>
+          <div class="tl-desc">Led deal negotiations end-to-end across transactions ranging from US$15m to US$1.3bn. Managed construction delays and underperformance across 7 assets — staying calm, finding solutions and keeping stakeholders onside when things did not go to plan.</div>
+          <span class="tl-tag re-tag">End-to-End Negotiation</span><span class="tl-tag re-tag">Problem Solving Under Pressure</span>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Aug 2015 – Feb 2017</div>
+          <div class="tl-role">Credit Manager – Infrastructure, Energy &amp; Telcos</div>
+          <div class="tl-org">Nedbank CIB</div>
+          <div class="tl-desc">Advised senior decision-makers and prepared clear recommendation papers for credit committees — distilling complex information into concise, compelling cases for action. This is the same skill required when advising a buyer or presenting an offer to a vendor.</div>
+          <span class="tl-tag re-tag">Clear Communication</span><span class="tl-tag re-tag">Decision Support</span>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Apr 2014 – Jul 2015</div>
+          <div class="tl-role">Credit Manager – Balance Sheet Lending</div>
+          <div class="tl-org">Nedbank CIB</div>
+          <div class="tl-desc">Assessed clients and transactions across every industry — rapid judgement about people, their intentions and the quality of what they were presenting. Strong instincts for separating genuine opportunity from noise.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot"></div>
+          <div class="tl-period">Jan 2013 – Mar 2014</div>
+          <div class="tl-role">Audit Manager – Top 40 Listed Clients</div>
+          <div class="tl-org">PwC South Africa</div>
+          <div class="tl-desc">Managed client relationships and large teams across complex assignments. Developed the discipline of meeting deadlines, managing expectations and maintaining quality under competing pressures — habits that translate directly into running a smooth sales campaign.</div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-dot hollow"></div>
+          <div class="tl-period">Jan 2010 – Dec 2012</div>
+          <div class="tl-role">CA Trainee → Chartered Accountant (SAICA)</div>
+          <div class="tl-org">PwC South Africa</div>
+          <div class="tl-desc">SAICA-accredited traineeship. Board exams passed first attempt — the foundation of the analytical discipline and client trust that has underpinned everything since.</div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Skills chart -->
+    <div class="sec">
+      <div class="sec-title">Skills relevant to real estate sales</div>
+      <div id="bar-chart">
+        <div class="chart-row"><div class="chart-lbl">Client relationships</div><div class="chart-bar-bg"><div class="chart-bar" style="width:0%;background:#1B2A4A" data-w="97"></div></div><div class="chart-val">97</div></div>
+        <div class="chart-row"><div class="chart-lbl">Negotiation</div><div class="chart-bar-bg"><div class="chart-bar" style="width:0%;background:#1B2A4A" data-w="96"></div></div><div class="chart-val">96</div></div>
+        <div class="chart-row"><div class="chart-lbl">Presenting &amp; pitching</div><div class="chart-bar-bg"><div class="chart-bar" style="width:0%;background:#1B2A4A" data-w="94"></div></div><div class="chart-val">94</div></div>
+        <div class="chart-row"><div class="chart-lbl">Financial literacy</div><div class="chart-bar-bg"><div class="chart-bar" style="width:0%;background:#C9A84C" data-w="99"></div></div><div class="chart-val">99</div></div>
+        <div class="chart-row"><div class="chart-lbl">Investor client fluency</div><div class="chart-bar-bg"><div class="chart-bar" style="width:0%;background:#C9A84C" data-w="97"></div></div><div class="chart-val">97</div></div>
+        <div class="chart-row"><div class="chart-lbl">Managing complex deals</div><div class="chart-bar-bg"><div class="chart-bar" style="width:0%;background:#C9A84C" data-w="95"></div></div><div class="chart-val">95</div></div>
+        <div class="chart-row"><div class="chart-lbl">Business development</div><div class="chart-bar-bg"><div class="chart-bar" style="width:0%;background:#1D9E75" data-w="90"></div></div><div class="chart-val">90</div></div>
+        <div class="chart-row"><div class="chart-lbl">Brisbane market knowledge</div><div class="chart-bar-bg"><div class="chart-bar" style="width:0%;background:#1D9E75" data-w="78"></div></div><div class="chart-val">78</div></div>
+      </div>
+    </div>
+
+    <!-- Why a CA in real estate sales -->
+    <div class="sec">
+      <div class="sec-title">Why a CA makes a better sales agent</div>
+      <div class="re-xwalk">
+        <div class="re-xwalk-body" style="font-size:12px;line-height:1.7;color:var(--t2)">
+          Most buyers making a significant property decision are also running financial calculations in their head — yield, capital growth, borrowing capacity, opportunity cost. Most agents cannot engage with those conversations at depth. I can. I have spent 16 years sitting across the table from sophisticated decision-makers, understanding their real objectives and helping them reach a confident yes. That is a rare combination in a sales environment, and it shows up most clearly when working with investors, upsizers and clients making the biggest financial decision of their lives.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══ RIGHT SIDEBAR ═══════════════════════════════════════════════════ -->
+  <div>
+
+    <!-- Real Estate Target Focus -->
+    <div class="side-card re-card sec">
+      <div class="sec-title re-sec">What I am looking for</div>
+      <ul class="re-cap-list">
+        <li>Residential sales role — Brisbane inner suburbs or growth corridors</li>
+        <li>Commercial sales — office, retail or industrial</li>
+        <li>Agency with a strong investor and high-net-worth client base</li>
+        <li>A principal who values financial intelligence in their agents</li>
+        <li>An environment where hard work and results are rewarded</li>
+      </ul>
+    </div>
+
+    <!-- Radar chart -->
+    <div class="side-card sec">
+      <div class="sec-title">Core capability profile</div>
+      <svg viewBox="0 0 280 260" width="100%" style="display:block">
+        <polygon points="140,62.5 202,98 202,162 140,197.5 78,162 78,98" fill="none" stroke="#e0ddd8" stroke-width="0.5"/>
+        <polygon points="140,85 185,108 185,152 140,175 95,152 95,108"   fill="none" stroke="#e0ddd8" stroke-width="0.5"/>
+        <polygon points="140,107.5 168,120 168,140 140,152.5 112,140 112,120" fill="none" stroke="#e0ddd8" stroke-width="0.5"/>
+        <polygon points="140,40 218,85 218,175 140,220 62,175 62,85" fill="none" stroke="#ccc" stroke-width="0.7"/>
+        <line x1="140" y1="40"  x2="140" y2="220" stroke="#e0ddd8" stroke-width="0.5"/>
+        <line x1="218" y1="85"  x2="62"  y2="175" stroke="#e0ddd8" stroke-width="0.5"/>
+        <line x1="218" y1="175" x2="62"  y2="85"  stroke="#e0ddd8" stroke-width="0.5"/>
+        <polygon points="140,44.5 210.2,89.5 211.8,171.4 140,209.2 73.7,168.25 77.6,94"
+          fill="rgba(201,168,76,.18)" stroke="#C9A84C" stroke-width="1.5"/>
+        <circle cx="140"   cy="44.5"   r="3.5" fill="#C9A84C"/>
+        <circle cx="210.2" cy="89.5"   r="3.5" fill="#C9A84C"/>
+        <circle cx="211.8" cy="171.4"  r="3.5" fill="#C9A84C"/>
+        <circle cx="140"   cy="209.2"  r="3.5" fill="#C9A84C"/>
+        <circle cx="73.7"  cy="168.25" r="3.5" fill="#C9A84C"/>
+        <circle cx="77.6"  cy="94"     r="3.5" fill="#C9A84C"/>
+        <text x="140" y="28" text-anchor="middle" font-size="9.5" fill="#888" font-family="sans-serif" font-weight="500">Negotiation</text>
+        <text x="224" y="83" text-anchor="start"  font-size="9.5" fill="#888" font-family="sans-serif" font-weight="500">Client relationships</text>
+        <text x="224" y="173" text-anchor="start" font-size="9.5" fill="#888" font-family="sans-serif" font-weight="500">Financial literacy</text>
+        <text x="140" y="234" text-anchor="middle" font-size="9.5" fill="#888" font-family="sans-serif" font-weight="500">Deal management</text>
+        <text x="56" y="173" text-anchor="end"    font-size="9.5" fill="#888" font-family="sans-serif" font-weight="500">Presenting</text>
+        <text x="56" y="84"  text-anchor="end"    font-size="9.5" fill="#888" font-family="sans-serif" font-weight="500">Business</text>
+        <text x="56" y="96"  text-anchor="end"    font-size="9.5" fill="#888" font-family="sans-serif" font-weight="500">development</text>
+      </svg>
+    </div>
+
+    <!-- Skills bars -->
+    <div class="side-card sec">
+      <div class="sec-title">Functional depth</div>
+      <div id="skills-bars">
+        <div class="chart-row"><div class="chart-lbl">Negotiation</div><div class="chart-bar-bg"><div class="chart-bar" style="width:0%;background:#1B2A4A" data-w="96"></div></div><div class="chart-val">96</div></div>
+        <div class="chart-row"><div class="chart-lbl">Client relationships</div><div class="chart-bar-bg"><div class="chart-bar" style="width:0%;background:#1B2A4A" data-w="97"></div></div><div class="chart-val">97</div></div>
+        <div class="chart-row"><div class="chart-lbl">Presenting &amp; pitching</div><div class="chart-bar-bg"><div class="chart-bar" style="width:0%;background:#1B2A4A" data-w="94"></div></div><div class="chart-val">94</div></div>
+        <div class="chart-row"><div class="chart-lbl">Financial literacy</div><div class="chart-bar-bg"><div class="chart-bar" style="width:0%;background:#C9A84C" data-w="99"></div></div><div class="chart-val">99</div></div>
+        <div class="chart-row"><div class="chart-lbl">Investor fluency</div><div class="chart-bar-bg"><div class="chart-bar" style="width:0%;background:#C9A84C" data-w="97"></div></div><div class="chart-val">97</div></div>
+        <div class="chart-row"><div class="chart-lbl">Managing complex deals</div><div class="chart-bar-bg"><div class="chart-bar" style="width:0%;background:#C9A84C" data-w="95"></div></div><div class="chart-val">95</div></div>
+        <div class="chart-row"><div class="chart-lbl">Business development</div><div class="chart-bar-bg"><div class="chart-bar" style="width:0%;background:#1D9E75" data-w="90"></div></div><div class="chart-val">90</div></div>
+        <div class="chart-row"><div class="chart-lbl">Brisbane market knowledge</div><div class="chart-bar-bg"><div class="chart-bar" style="width:0%;background:#1D9E75" data-w="78"></div></div><div class="chart-val">78</div></div>
+      </div>
+    </div>
+
+    <!-- Education -->
+    <div class="side-card sec">
+      <div class="sec-title">Education</div>
+      <div class="edu-row">
+        <div class="edu-qual">Chartered Accountant (CA)</div>
+        <div class="edu-inst">SAICA / IRBA – South Africa</div>
+        <div class="edu-yr">Board exams passed first attempt — Jan 2010 &amp; Nov 2011</div>
+      </div>
+      <div class="edu-row">
+        <div class="edu-qual">Post-Graduate Honours – Financial Accounting</div>
+        <div class="edu-yr">2009 · Accounting, Tax, Investment, Auditing</div>
+      </div>
+      <div class="edu-row">
+        <div class="edu-qual">Undergraduate – Financial Accounting</div>
+        <div class="edu-yr">2005–2008 · Accounting, Economics, Law, Statistics</div>
+      </div>
+    </div>
+
+    <!-- Geographic practice -->
+    <div class="side-card sec">
+      <div class="sec-title">Geographic practice</div>
+      <div class="geo-flags">
+        <div class="geo-item"><span class="geo-flag">🇦🇺</span><span>Australia<br><span style="font-size:10px;color:#aaa">2022–present</span></span></div>
+        <div class="geo-item"><span class="geo-flag">🇿🇦</span><span>South Africa<br><span style="font-size:10px;color:#aaa">2010–2022</span></span></div>
+        <div class="geo-item"><span class="geo-flag">🌍</span><span>Pan-Africa<br><span style="font-size:10px;color:#aaa">multiple markets</span></span></div>
+        <div class="geo-item"><span class="geo-flag">🌏</span><span>Asia exposure<br><span style="font-size:10px;color:#aaa">via mandates</span></span></div>
+      </div>
+    </div>
+
+    <!-- Current practice -->
+    <div class="side-card sec">
+      <div class="sec-title">Current &amp; prior businesses</div>
+      <div style="font-size:12px;color:var(--t2);line-height:1.7">
+        <div style="margin-bottom:8px"><strong style="color:var(--t)">NR Advisory Pty Ltd</strong><br>Independent advisory practice — client acquisition, relationship management and delivering outcomes under commercial pressure.</div>
+        <div><strong style="color:var(--t)">ProfitPulse</strong><br>Commercial advisory for SME owners — helping business owners understand their numbers, grow with confidence and make better decisions.</div>
+      </div>
+    </div>
+
+    <!-- Outside the office -->
+    <div class="side-card">
+      <div class="sec-title">Outside the office</div>
+      <div class="passion-tags">
+        <span class="p-tag">Wellness warrior</span>
+        <span class="p-tag">Formula 1</span>
+        <span class="p-tag">Table tennis</span>
+        <span class="p-tag">Cricket</span>
+        <span class="p-tag">Avid traveller</span>
+        <span class="p-tag">Super dad</span>
+        <span class="p-tag">Novice baker</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="ftr">
+  <a href="https://NRAdvisory.com.au">NRAdvisory.com.au</a> &nbsp;·&nbsp;
+  <a href="https://Profit-Pulse.com.au">Profit-Pulse.com.au</a> &nbsp;·&nbsp;
+  <a href="https://linkedin.com/in/nitesh-roopa-77594163">linkedin.com/in/nitesh-roopa-77594163</a> &nbsp;·&nbsp;
+  +61 411 876 267 &nbsp;·&nbsp; Nitesh@NRAdvisory.com.au
+</div>
+
+<script>
+setTimeout(()=>{
+  document.querySelectorAll('.chart-bar').forEach(b=>{
+    b.style.width=b.dataset.w+'%';
+  });
+},300);
+</script>
+</body>
+</html>
